@@ -358,9 +358,9 @@ const FreonMenuButton = GObject.registerClass(class Freon_FreonMenuButton extend
         if (this._settings.get_boolean('show-voltage'))
             voltageInfo = this._utils.sensors.volt;
 
-        let driveTempInfo = [];
+        let driveTempInfo = this._utils.sensors.disks;
         if(this._utils.disks && this._utils.disks.available) {
-            driveTempInfo = this._utils.disks.temp;
+            driveTempInfo = driveTempInfo.concat(this._utils.disks.temp);
         }
 
         if (this._utils.liquidctl && this._utils.liquidctl.available) {
